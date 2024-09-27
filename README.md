@@ -31,10 +31,12 @@ bash
 Directory Structure
 Set up your project directory as follows:
 
-```/Face-Recognition-Project
+```
+Face-Recognition-Project
    ├── /Images                
    ├── face_recognition.py     
-   └── README.md```               
+   └── README.md
+```         
 The /Images folder contains images of people you want to recognize in the webcam feed.
 The face_recognition.py script is the main program for detecting and recognizing faces.
 Code Explanation
@@ -45,7 +47,8 @@ The script first loads images from the Images directory and converts them into e
 
 python
 Copy code
-```path = 'Images'
+```
+path = 'Images'
 images = []
 className = []
 myList = os.listdir(path)
@@ -64,15 +67,17 @@ def FindEncodings(images):
     return encodeList
 
 encodeListKnown = FindEncodings(images)
-print('Encoding complete')```
-Images Loading: The script reads images from the folder and stores them in the images list.
+print('Encoding complete')
+```
+# Images Loading: The script reads images from the folder and stores them in the images list.
 Encoding: The FindEncodings function generates face encodings from each image using the face_recognition.face_encodings() function.
 Webcam Capture and Face Detection
 The webcam is activated using cv2.VideoCapture(0). For each frame captured from the webcam, the face is located and encoded in real-time.
 
 python
 Copy code
-```cap = cv2.VideoCapture(0)
+```
+cap = cv2.VideoCapture(0)
 
 while True:
     success, img = cap.read()
@@ -80,8 +85,9 @@ while True:
     imgS = cv2.cvtColor(imgS, cv2.COLOR_BGR2RGB)
 
     facesCurFrame = face_recognition.face_locations(imgS)
-    encodesCurFrame = face_recognition.face_encodings(imgS, facesCurFrame)```
-Resizing: The webcam frame is resized to 25% of its original size for faster processing.
+    encodesCurFrame = face_recognition.face_encodings(imgS, facesCurFrame)
+```
+# Resizing: The webcam frame is resized to 25% of its original size for faster processing.
 Face Location: The face_locations function identifies the locations of faces in the frame.
 Face Encoding: The face_encodings function encodes the detected faces for comparison.
 Displaying Results
@@ -109,13 +115,16 @@ Copy code
         break
 
 cap.release()
-cv2.destroyAllWindows()```
+cv2.destroyAllWindows()
+```
 Running the Project
 Place your images in the Images folder.
 Run the script using the following command:
 bash
 Copy code
-```python face_recognition.py```
+```
+python face_recognition.py
+```
 Quit the script by pressing the 'q' key.
 Sample Outputs
 Below are visual outputs from running the face recognition project.
